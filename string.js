@@ -5,14 +5,24 @@ class Solution {
    * @return {boolean}
    */
   isAnagram(s, t) {
+    if (s.length !== t.length) {
+      return false;
+    }
+
+    const countS = {};
+    const countT = {};
+
     for (let i = 0; i < s.length; i++) {
-      for (let j = 0; j < t.length; j++) {
-        if (s[i] === t[i]) {
-          return false;
-        } else {
-          return true;
-        }
+      countS[s[i]] = 1 + (countS[s[i]] || 0);
+      countT[t[i]] = 1 + (countT[t[i]] || 0);
+    }
+
+    for (const key in countS) {
+      if (countS[key] !== countT[key]) {
+        return false;
       }
     }
+
+    return true;
   }
 }
