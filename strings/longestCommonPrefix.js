@@ -3,23 +3,18 @@
  * @return {string}
  */
 var longestCommonPrefix = function (strs) {
-  let aux = "";
-  for (let i = 0; i < strs.length; i++) {
-    const letters = strs[i].split("");
-    const next = strs[i + 1];
-    console.log("letters", letters);
-    for (let j = 0; j < next.length; j++) {
-      console.log(letters[j]);
-      if (letters[j] === next[j]) {
-        aux += letters[j];
-        j++;
-      } else {
-        return "";
-      }
+  if (strs.length === 0) return "";
+
+  let prefix = strs[0];
+
+  for (let i = 1; i < strs.length; i++) {
+    while (strs[i].indexOf(prefix) !== 0) {
+      prefix = prefix.slice(0, -1);
+      if (prefix === "") return "";
     }
-    console.log("aux", aux);
-    return aux;
   }
+
+  return prefix;
 };
 
 console.log(longestCommonPrefix(["flor", "fluxo", "voo"]));
