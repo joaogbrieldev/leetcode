@@ -21,4 +21,4 @@ var summaryRanges = function (nums) {
   }
   return result;
 };
-console.log(summaryRanges([0, 1, 2, 4, 5, 7]));
+console.log(summaryRanges([0, 1, 2, 4, 5, 8]));
